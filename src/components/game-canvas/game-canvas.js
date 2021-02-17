@@ -8,12 +8,8 @@ class GameCanvas extends Component {
 
 
   preload = (p) => {
-    p.loadImage("./background.png", img => {
+    p.loadImage("background.png", img => {
       this.backgroundImage = img;
-    });
-
-    p.loadImage("./bird.png", img => {
-      this.birdImage = img;
     });
   }
 
@@ -24,7 +20,7 @@ class GameCanvas extends Component {
   }
 
   draw = (p) => {
-    // p.background(135, 206, 250); // Clean last draw
+    p.background(135, 206, 250); // Clean last draw
     if(this.backgroundImage){
       p.image(this.backgroundImage, 0, 0,850,850);
     }

@@ -11,14 +11,6 @@ import '../../game-parameters';
 
 class ControlPanel extends Component {
 
-  // gravity;
-  
-  // renderOnlyOneBird;
-  // renderPipes;
-
-  // population;
-  // hiddenNodes;
-
   constructor(props) {
     super(props);
     this.scrollSpeed = global.gameParameters.game.scrollSpeed
