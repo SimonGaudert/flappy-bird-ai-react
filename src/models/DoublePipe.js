@@ -37,22 +37,22 @@ class DoublePipe {
     }
 
     checkCollisionX(bird){
-        if((bird.x+bird.size/2) >= this.topPipe.x && bird.x <= this.topPipe.x + this.topPipe.width){
+        if((bird.x+bird.size/2) >= this.topPipe.x && (bird.x - bird.size/2) <= this.topPipe.x + this.topPipe.width){
             return true;
         }
 
         //This is probably never called
-        if ((bird.x + bird.size/2) >= this.bottomPipe.x && bird.x <= this.bottomPipe.x + this.bottomPipe.width) {
+        if ((bird.x + bird.size/2) >= this.bottomPipe.x && (bird.x - bird.size/2) <= this.bottomPipe.x + this.bottomPipe.width) {
             return true;
         }
         return false;
     }
 
     checkCollisionY(bird){
-        if((bird.y + bird.size/2) >= this.topPipe.y && bird.y <= this.topPipe.y + this.topPipe.height){
+        if((bird.y + bird.size/2) >= this.topPipe.y && (bird.y - bird.size/2) <= this.topPipe.y + this.topPipe.height){
             return true;
         }
-        if((bird.y + bird.size/2) >= this.bottomPipe.y && bird.y <= this.bottomPipe.y + this.bottomPipe.height){
+        if((bird.y + bird.size/2) >= this.bottomPipe.y && (bird.y - bird.size/2) <= this.bottomPipe.y + this.bottomPipe.height){
             return true;
         }
         return false;
