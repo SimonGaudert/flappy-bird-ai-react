@@ -105,7 +105,7 @@ class Bird {
   }
 
   flap() {
-    this.yVel = -15;
+    this.yVel = -1 * global.gameParameters.game.flapVelocity;
   }
 
   copy(){

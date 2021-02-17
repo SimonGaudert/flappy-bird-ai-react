@@ -1,6 +1,7 @@
 module.exports = global.gameParameters = {
     game:{
         gravity: 1,
+        flapVelocity: 15,
         scrollSpeed:2,
         pipeGap:200,
         renderBirds: true,

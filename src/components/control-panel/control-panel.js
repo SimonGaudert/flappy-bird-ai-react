@@ -5,6 +5,7 @@ import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import ReplayIcon from '@material-ui/icons/Replay';
 import Divider from '@material-ui/core/Divider';
+// import Switch from '@material-ui/core/Switch';
 
 import './control-panel.css'
 import '../../game-parameters';
@@ -13,28 +14,41 @@ class ControlPanel extends Component {
 
   constructor(props) {
     super(props);
-    this.scrollSpeed = global.gameParameters.game.scrollSpeed
-    this.pipeGap = global.gameParameters.game.pipeGap
-    this.population = global.gameParameters.learning.population
-    this.mutationRate = global.gameParameters.learning.mutationRate
-
-    this.props.restartPopulation();
+    this.scrollSpeed = global.gameParameters.game.scrollSpeed;
+    this.pipeGap = global.gameParameters.game.pipeGap;
+    this.population = global.gameParameters.learning.population;
+    this.mutationRate = global.gameParameters.learning.mutationRate;
+    this.gravity = global.gameParameters.game.gravity;
+    this.flapVelocity = global.gameParameters.game.flapVelocity;
+    this.renderBirds = global.gameParameters.game.renderBirds;
   }
 
   handlePipeGapChange(event, value) {
-    global.gameParameters.game.pipeGap = value
+    global.gameParameters.game.pipeGap = value;
   }
 
   handleScrollSpeedChange(event, value) {
-    global.gameParameters.game.scrollSpeed = value
+    global.gameParameters.game.scrollSpeed = value;
   }
 
   handlePopulationChange(event, value) {
-    global.gameParameters.learning.population = value
+    global.gameParameters.learning.population = value;
   }
 
   handleMutationRateChange(event, value) {
-    global.gameParameters.learning.mutationRate = value
+    global.gameParameters.learning.mutationRate = value;
+  }
+
+  handleGravityChange(event, value) {
+    global.gameParameters.game.gravity = value;
+  }
+
+  handleFlapVelocityChange(event, value) {
+    global.gameParameters.game.flapVelocity = value;
+  }
+
+  handleRenderBirdsChange(event, value) {
+    global.gameParameters.game.showBirds = value;
   }
   
   render() {
@@ -47,7 +61,7 @@ class ControlPanel extends Component {
 
         <Grid style={{ marginBottom: "15px" }} container spacing={3}>
           <Grid item xs={12} sm={6}>
-            <Typography gutterBottom>
+            <Typography gutterBottom style={{textAlign:'left'}} variant="h6">
               Pipe Gap
             </Typography>
             <Slider
@@ -62,7 +76,7 @@ class ControlPanel extends Component {
             />
           </Grid>
           <Grid item xs={12} sm={6}>
-            <Typography gutterBottom>
+            <Typography gutterBottom style={{textAlign:'left'}} variant="h6">
               Scroll Speed
             </Typography>
             <Slider
@@ -74,6 +88,36 @@ class ControlPanel extends Component {
             />
           </Grid>
         </Grid>
+        <Grid style={{ marginBottom: "15px" }} container spacing={3}>
+          <Grid item xs={12} sm={6}>
+            <Typography gutterBottom style={{textAlign:'left'}} variant="h6">
+              Gravity
+            </Typography>
+            <Slider
+              aria-labelledby="discrete-slider"
+              valueLabelDisplay="auto"
+              step={1}
+              marks
+              min={0}
+              max={20}
+              defaultValue={this.gravity}
+              onChange={this.handleGravityChange}
+            />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <Typography gutterBottom style={{textAlign:'left'}} variant="h6">
+              Flap Velocity
+            </Typography>
+            <Slider
+              valueLabelDisplay="auto"
+              min={0}
+              max={100}
+              defaultValue={this.flapVelocity}
+              onChange={this.handleFlapVelocityChange}
+            />
+          </Grid>
+        </Grid>
+
         {/* <Grid style={{ marginBottom: "15px" }} container spacing={3}>
           <Grid item xs={12} sm={6}>
             <Typography gutterBottom>
@@ -91,13 +135,13 @@ class ControlPanel extends Component {
 
         <Divider />
 
-        <Typography style={{ marginTop: "15px" }} gutterBottom variant="h4">
+        <Typography style={{ marginTop: "30px" }} gutterBottom variant="h4">
           AI Settings
         </Typography>
 
         <Grid style={{ marginBottom: "15px" }} container spacing={3}>
-          <Grid item xs={12} sm={6}>
-            <Typography gutterBottom>
+          <Grid item xs={12} sm={6} >
+            <Typography gutterBottom style={{textAlign:'left'}} variant="h6">
               Population
             </Typography>
             <Slider
@@ -112,7 +156,7 @@ class ControlPanel extends Component {
             />
           </Grid>
           <Grid item xs={12} sm={6}>
-            <Typography gutterBottom>
+            <Typography gutterBottom style={{textAlign:'left'}} variant="h6">
               Mutation Rate
             </Typography>
             <Slider
@@ -129,7 +173,7 @@ class ControlPanel extends Component {
         </Grid>
 
         <Grid item xs={12} sm={12}>
-          <Button onClick={()=>this.props.restartPopulation()} variant="contained" color="primary" startIcon={<ReplayIcon />}>
+          <Button style={{textTransform: 'none'}} onClick={()=>this.props.restartPopulation()} variant="contained" color="primary" startIcon={<ReplayIcon />}>
             Restart Training
           </Button>
         </Grid>
