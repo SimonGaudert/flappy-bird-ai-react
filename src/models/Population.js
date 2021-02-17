@@ -19,14 +19,18 @@ class Population {
     }
 
     update() {
-        this.updatePipes()
+        this.updatePipes();
+        this.updateBirds();
+    }
+
+    updateBirds(){
         for (let bird of this.birds) {
             if (!bird.dead) {
-                bird.look(this.doublePipe)
-                bird.think()
-                bird.update(this.doublePipe)
+                bird.look(this.doublePipe);
+                bird.think();
+                bird.update(this.doublePipe);
                 if (true) { // TODO: set to false if we want to not render for better performance
-                    bird.draw(this.p)
+                    bird.draw(this.p);
                 }
             }
         }
@@ -63,11 +67,12 @@ class Population {
 
     naturalSelection() {
         this.calculateAllFitness()
+        let totalFitness = this.calculateTotalFitness()
         this.sortBirds()
         let temp = []
         // eslint-disable-next-line no-unused-vars
         for (let bird of this.birds) {
-            temp.push(this.pickBird())
+            temp.push(this.pickBird(totalFitness))
         }
         this.birds = temp
         this.generation++
@@ -79,12 +84,12 @@ class Population {
         this.birds.sort(function (a, b) { return b.fitness - a.fitness })
     }
 
-    pickBird() {
+    pickBird(totalFitness) {
         let index = 0;
         let r = Math.random();
 
         while (r > 0) {
-            r -= this.birds[index].fitness;
+            r -= (this.birds[index].fitness / totalFitness);
             index += 1;
         }
         index -= 1;
