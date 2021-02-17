@@ -12,12 +12,6 @@ class App extends Component {
   
   population = null;
 
-  constructor() {
-    super();
-
-  }
-
-
   createPopulation(p){
     this.population = new Population(p, global.gameParameters.learning.population)
   }

@@ -65,6 +65,7 @@ class Population {
         this.calculateAllFitness()
         this.sortBirds()
         let temp = []
+        // eslint-disable-next-line no-unused-vars
         for (let bird of this.birds) {
             temp.push(this.pickBird())
         }

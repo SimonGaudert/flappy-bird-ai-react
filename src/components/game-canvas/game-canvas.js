@@ -1,15 +1,10 @@
 import React, { Component } from 'react';
 import Sketch from "react-p5";
-import Population from '../../models/Population'
 import './game-canvas.css'
 
 class GameCanvas extends Component {
 
   canvas;
-
-  constructor(props){
-    super(props);
-  }
 
 
   preload = (p) => {

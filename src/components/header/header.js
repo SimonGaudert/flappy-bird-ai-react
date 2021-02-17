@@ -6,13 +6,6 @@ import Grid from '@material-ui/core/Grid';
 
 
 class Header extends Component {
-    constructor(props) {
-        super(props);
-
-    }
-
-
-
     render() {
         return (
             <div className="header">

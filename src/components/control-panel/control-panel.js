@@ -5,7 +5,6 @@ import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import ReplayIcon from '@material-ui/icons/Replay';
 import Divider from '@material-ui/core/Divider';
-import Switch from '@material-ui/core/Switch';
 
 import './control-panel.css'
 import '../../game-parameters';

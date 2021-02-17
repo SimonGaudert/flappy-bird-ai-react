@@ -12,6 +12,7 @@ class ActivationFunction {
     y => y * (1 - y)
   );
   
+  // eslint-disable-next-line no-unused-vars
   let tanh = new ActivationFunction(
     x => Math.tanh(x),
     y => 1 - (y * y)
