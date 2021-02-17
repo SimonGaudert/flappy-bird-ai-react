@@ -36,20 +36,30 @@ class DoublePipe {
         return true;
     }
 
-    checkCollision(bird) {
-        if ((bird.x+bird.size/2) >= this.topPipe.x &&
-             bird.x <= this.topPipe.x + this.topPipe.width &&
-            (bird.y+bird.size/2) >= this.topPipe.y &&
-             bird.y <= this.topPipe.y + this.topPipe.height) {
+    checkCollisionX(bird){
+        if((bird.x+bird.size/2) >= this.topPipe.x && bird.x <= this.topPipe.x + this.topPipe.width){
             return true;
-        } else if ((bird.x + bird.size/2) >= this.bottomPipe.x &&
-                    bird.x <= this.bottomPipe.x + this.bottomPipe.width &&
-                    (bird.y + bird.size/2) >= this.bottomPipe.y &&
-                    bird.y <= this.bottomPipe.y + this.bottomPipe.height) {
-            return true;
-        } else {
-            return false;
         }
+
+        //This is probably never called
+        if ((bird.x + bird.size/2) >= this.bottomPipe.x && bird.x <= this.bottomPipe.x + this.bottomPipe.width) {
+            return true;
+        }
+        return false;
+    }
+
+    checkCollisionY(bird){
+        if((bird.y + bird.size/2) >= this.topPipe.y && bird.y <= this.topPipe.y + this.topPipe.height){
+            return true;
+        }
+        if((bird.y + bird.size/2) >= this.bottomPipe.y && bird.y <= this.bottomPipe.y + this.bottomPipe.height){
+            return true;
+        }
+        return false;
+    }
+
+    checkCollision(bird) {
+        return (this.checkCollisionY(bird) && this.checkCollisionX(bird));
     }
 
 }
