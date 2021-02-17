@@ -5,8 +5,7 @@ import './game-canvas.css'
 class GameCanvas extends Component {
 
   canvas;
-
-
+  
   preload = (p) => {
     p.loadImage("background.png", img => {
       this.backgroundImage = img;

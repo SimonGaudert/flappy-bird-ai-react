@@ -89,7 +89,7 @@ class Population {
         let r = Math.random();
 
         while (r > 0) {
-            r -= (this.birds[index].fitness / totalFitness);
+            r -= (this.birds[index].fitness / totalFitness); //Picking birds proportional to fitness
             index += 1;
         }
         index -= 1;
